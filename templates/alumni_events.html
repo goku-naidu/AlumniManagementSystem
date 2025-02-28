@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Events - St. Joseph's University</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='alumnieventstyles.css') }}">
+</head>
+<body>
+<div class="container">
+    <a href="{{ url_for('home') }}" class="home-btn">Back to Home</a>
+    
+    <div class="header">
+        <h1>Alumni Events</h1>
+        <div class="search-bar">
+            <input type="text" placeholder="Search events by title, date, or location...">
+            <button>Search</button>
+        </div>
+    </div>
+
+    <table class="events-table">
+        <thead>
+            <tr>
+                <th>Event Title</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Location</th>
+                <th>Description</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+            <tr>
+                <td>{{ event.title }}</td>
+                <td>{{ event.date }}</td>
+                <td>{{ event.time }}</td>
+                <td>{{ event.location }}</td>
+                <td>{{ event.description }}</td>
+                <td class="status-{{ event.registration_status.lower() }}">
+                    {{ event.registration_status }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

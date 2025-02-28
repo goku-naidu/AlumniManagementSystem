@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Dashboard - St. Joseph's University</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='alumnistyles.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2 class="sidebar-title">Alumni Portal</h2>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#profile">My Profile</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#network">Alumni Network</a></li>
+                    <li><a href="#jobs">Job Board</a></li>
+                    <li><a href="#mentorship">Mentorship</a></li>
+                    <li><a href="#donations">Give Back</a></li>
+                    <li><a href="#settings">Settings</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header class="header">
+                <h1>Welcome back, John Doe</h1>
+                <p>Class of 2020 | Information Technology</p>
+            </header>
+
+            <div class="dashboard-cards">
+                <div class="card">
+                    <h3>Upcoming Events</h3>
+                    <p>3 New Events</p>
+                </div>
+                <div class="card">
+                    <h3>Network Connections</h3>
+                    <p>152 Alumni</p>
+                </div>
+                <div class="card">
+                    <h3>Job Opportunities</h3>
+                    <p>12 New Postings</p>
+                </div>
+                <div class="card">
+                    <h3>Mentorship Status</h3>
+                    <p>2 Active Mentees</p>
+                </div>
+            </div>
+
+            <section class="profile-section">
+                <h2>Profile Overview</h2>
+                <div style="margin: 20px 0;">
+                    <p><strong>Current Position:</strong> Senior Software Developer</p>
+                    <p><strong>Company:</strong> Tech Solutions Inc.</p>
+                    <p><strong>Location:</strong> New York, NY</p>
+                    <button class="update-button">Update Profile</button>
+                </div>
+            </section>
+
+            <section class="upcoming-events">
+                <h2>Upcoming Events</h2>
+                <div class="event-item">
+                    <h3>Annual IT Alumni Meet</h3>
+                    <p>Date: March 15, 2025</p>
+                    <p>Location: Main Campus</p>
+                </div>
+                <div class="event-item">
+                    <h3>Tech Talk Series</h3>
+                    <p>Date: April 2, 2025</p>
+                    <p>Location: Virtual Event</p>
+                </div>
+                <div class="event-item">
+                    <h3>Career Networking Night</h3>
+                    <p>Date: April 20, 2025</p>
+                    <p>Location: Downtown Conference Center</p>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

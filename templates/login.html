@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='loginstyles.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <label for="user_type">User Type</label>
+            {{ form.user_type(class_='form-control') }}
+            <label for="email">Email</label>
+            {{ form.email(class_='form-control', placeholder='Enter your email') }}
+            <label for="password">Password</label>
+            {{ form.password(class_='form-control', placeholder='Enter your password') }}
+            <div>
+                <input type="checkbox" id="remember_me" name="remember_me">
+                <label for="remember_me">Remember Me</label>
+            </div>
+            <button type="submit">Login</button>
+            {% if form.errors %}
+                <ul>
+                    {% for field, errors in form.errors.items() %}
+                        {% for error in errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </form>
+        <a href="{{ url_for('register') }}">Don't have an account? Register here</a>
+    </div>
+</body>
+</html>

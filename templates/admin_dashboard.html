@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/adminstyles.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-container">
+                <img src="/api/placeholder/50/50" alt="SJU Logo" class="logo">
+                <h2>SJU Admin</h2>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="{{ url_for('admin_dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ url_for('manage_users') }}">Manage Users</a></li>
+                    <li><a href="{{ url_for('manage_events') }}">Manage Events</a></li>
+                    <li><a href="#">Reports & Analytics</a></li>
+                    <li><a href="#">Email Communications</a></li>
+                    <li><a href="#">System Settings</a></li>
+                    <li><a href="{{ url_for('logout') }}" class="logout-button">Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header class="header">
+                <div>
+                    <h1>Admin Dashboard</h1>
+                    <p>Welcome back, Admin</p>
+                </div>
+                <div class="user-info">
+                    <span>{{ session.get('email') }}</span>
+                    <a href="{{ url_for('logout') }}" class="button logout-button">Logout</a>
+                </div>
+            </header>
+
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h3>Total Alumni</h3>
+                    <div class="number">1,234</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Active Users</h3>
+                    <div class="number">892</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Pending Approvals</h3>
+                    <div class="number">23</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Upcoming Events</h3>
+                    <div class="number">8</div>
+                </div>
+            </div>
+
+            <div class="recent-activity">
+                <h2>Recent Activity</h2>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <span>New alumni registration: John Doe</span>
+                        <span>2 minutes ago</span>
+                    </div>
+                    <div class="activity-item">
+                        <span>Event created: Annual Alumni Meet 2025</span>
+                        <span>1 hour ago</span>
+                    </div>
+                    <div class="activity-item">
+                        <span>Profile update: Jane Smith</span>
+                        <span>3 hours ago</span>
+                    </div>
+                    <div class="activity-item">
+                        <span>New job posting: Senior Developer</span>
+                        <span>5 hours ago</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

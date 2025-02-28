@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Directory - St. Joseph's University</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='alumnidirectorystyles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <a href="{{ url_for('home') }}" class="home-btn">Back to Home</a>
+        
+        <div class="header">
+            <h1>Alumni Of The IT Department</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="Search alumni by name, company, or location...">
+                <button>Search</button>
+            </div>
+        </div>
+
+        <table class="alumni-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Batch</th>
+                    <th>Degree</th>
+                    <th>Current Company</th>
+                    <th>Location</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for alumnus in alumni %}
+                <tr>
+                    <td>{{ alumnus.name }}</td>
+                    <td>{{ alumnus.batch }}</td>
+                    <td>{{ alumnus.degree }}</td>
+                    <td>{{ alumnus.current_company }}</td>
+                    <td>{{ alumnus.location }}</td>
+                    <td>{{ alumnus.email }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
