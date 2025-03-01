@@ -21,10 +21,12 @@
         <table class="alumni-table">
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
                     <th>Batch</th>
                     <th>Degree</th>
                     <th>Current Company</th>
+                    <th>Current Designation</th>
                     <th>Location</th>
                     <th>Email</th>
                 </tr>
@@ -32,10 +34,12 @@
             <tbody>
                 {% for alumnus in alumni %}
                 <tr>
-                    <td>{{ alumnus.name }}</td>
+                    <td>{{ alumnus.first_name }}</td>
+                    <td>{{ alumnus.last_name }}</td>
                     <td>{{ alumnus.batch }}</td>
                     <td>{{ alumnus.degree }}</td>
                     <td>{{ alumnus.current_company }}</td>
+                    <td>{{ alumnus.current_designation }}</td>
                     <td>{{ alumnus.location }}</td>
                     <td>{{ alumnus.email }}</td>
                 </tr>
