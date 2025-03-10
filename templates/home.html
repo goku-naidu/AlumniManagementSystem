@@ -13,18 +13,18 @@
         }
         .hero-section {
             color: white;
-            padding: 50px 20px;
+            padding: 30px 20px;  
         }
         .content {
             color: white;
             padding: 2%;
             text-align: left;
-            margin-top:auto;
+            margin-top: 10px;  
         }
         .section {
             background-color: rgba(0, 0, 0, 0.3);
-            padding: 2%;
-            margin: auto;
+            padding: 1%;
+            margin-top: auto;
             border-radius: 10px;
         }
         .footer {
@@ -43,7 +43,7 @@
     <header class="bg-light py-3">
         <div class="container d-flex justify-content-between align-items-center">
             <img src="/static/images/logo.png" alt="Logo" style="width: 70px; height: auto; margin-right: 10px;">
-            <h1 class="h3">ST.JOSEPH'S UNIVERSITY</h1>
+            <h1 class="h2" style="font-family: 'Times New Roman', serif; font-weight: bold;">ST.JOSEPH'S UNIVERSITY</h1>
             <nav>
                 <a href="{{ url_for('alumni_directory') }}" class="btn btn-primary">Explore Alumni</a>
                 <a href="{{ url_for('alumni_events') }}" class="btn btn-primary">Alumni Events</a>
@@ -55,18 +55,22 @@
 
     <!-- Hero Section --> 
     <section class="hero-section">
-        <h2>Welcome To The Alumni Page Of The IT Department</h2>
+        <h2 style="font-weight:bold">Welcome To The Alumni Page Of The IT Department</h2>
         <p><h4>Connecting Alumni For A Brighter Future</h4></p>
     </section>
     
     <div class="content">
         <div class="section">
-            <h2>About the Department</h2>
+            <h3 style="font-weight:bold">About the University</h2>
+            <p>St Joseph’s University (SJU), a Jesuit institution in Bengaluru, was established in 1882 and became a university on 2nd July 2022. It was inaugurated as India’s first public-private university by President Droupadi Murmu on 27 September 2022.</p>
+        </div>
+        <div class="section">
+            <h3 style="font-weight:bold">About the Department</h2>
             <p>The IT Department at St. Joseph's University is dedicated to providing cutting-edge technological education and research opportunities.</p>
         </div>
         
         <div class="section">
-            <h2>About Alumni</h2>
+            <h3 style="font-weight:bold">About Alumni</h2>
             <p>Our alumni network represents a powerful community of technology professionals making significant impacts across various industries.</p>
         </div>
     </div>

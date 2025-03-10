@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Events - SJU Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/adminstyles.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-container">
+                <img src="/static/images/logo.png" alt="SJU Logo" class="logo">
+                <h2>SJU Admin</h2>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="{{ url_for('admin_dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ url_for('manage_users') }}">Manage Users</a></li>
+                    <li><a href="{{ url_for('manage_events') }}">Manage Events</a></li>
+                    <li><a href="#">Reports & Analytics</a></li>
+                    <li><a href="#">Email Communications</a></li>
+                    <li><a href="#">System Settings</a></li>
+                    <li><a href="{{ url_for('logout') }}" class="logout-button">Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <header class="header">
+                <div>
+                    <h1>Manage Events</h1>
+                    <p>Create, edit, and manage alumni events</p>
+                </div>
+                <div class="user-info">
+                    <span>{{ session.get('email') }}</span>
+                    <a href="{{ url_for('logout') }}" class="button logout-button">Logout</a>
+                </div>
+            </header>
+            
+            <a href="#" class="add-button" onclick="openModal('add-event-modal')">+ Create New Event</a>
+            
+            <div class="search-filter">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search events...">
+                    <button><i class="fa fa-search"></i> Search</button>
+                </div>
+                <div class="filter-options">
+                    <select>
+                        <option value="">All Event Types</option>
+                        <option value="reunion">Reunion</option>
+                        <option value="networking">Networking</option>
+                        <option value="workshop">Workshop</option>
+                        <option value="social">Social</option>
+                    </select>
+                    <select>
+                        <option value="">All Event Status</option>
+                        <option value="upcoming">Upcoming</option>
+                        <option value="ongoing">Ongoing</option>
+                        <option value="past">Past</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="data-table-container">
+                <h2>Event List</h2>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Event Name</th>
+                            <th>Date</th>
+                            <th>Location</th>
+                            <th>Event Type</th>
+                            <th>Registrations</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Annual Alumni Meet 2025</td>
+                            <td>Apr 15, 2025</td>
+                            <td>Main Campus Auditorium</td>
+                            <td>Reunion</td>
+                            <td>87/250</td>
+                            <td>Upcoming</td>
+                            <td class="action-buttons">
+                                <a href="#" class="edit-button" onclick="openModal('edit-event-modal')">Edit</a>
+                                <a href="#" class="delete-button" onclick="confirmDelete('Annual Alumni Meet 2025')">Cancel</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Career Workshop: Tech Industry</td>
+                            <td>Mar 20, 2025</td>
+                            <td>Business School, Room 302</td>
+                            <td>Workshop</td>
+                            <td>45/100</td>
+                            <td>Upcoming</td>
+                            <td class="action-buttons">
+                                <a href="#" class="edit-button" onclick="openModal('edit-event-modal')">Edit</a>
+                                <a href="#" class="delete-button" onclick="confirmDelete('Career Workshop: Tech Industry')">Cancel</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Networking Night: Finance</td>
+                            <td>Mar 10, 2025</td>
+                            <td>Business School Lounge</td>
+                            <td>Networking</td>
+                            <td>32/75</td>
+                            <td>Upcoming</td>
+                            <td class="action-buttons">
+                                <a href="#" class="edit-button" onclick="openModal('edit-event-modal')">Edit</a>
+                                <a href="#" class="delete-button" onclick="confirmDelete('Networking Night: Finance')">Cancel</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Homecoming Celebration</td>
+                            <td>Feb 15, 2025</td>
+                            <td>Sports Complex</td>
+                            <td>Social</td>
+                            <td>180/300</td>
+                            <td>Past</td>
+                            <td class="action-buttons">
+                                <a href="#" class="edit-button" onclick="openModal('edit-event-modal')">Edit</a>
+                                <a href="#" class="delete-button" onclick="confirmDelete('Homecoming Celebration')">Cancel</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Guest Lecture: Future of AI</td>
+                            <td>Jan 25, 2025</td>
+                            <td>CompSci Building Auditorium</td>
+                            <td>Workshop</td>
+                            <td>125/150</td>
+                            <td>Past</td>
+                            <td class="action-buttons">
+                                <a href="#" class="edit-button" onclick="openModal('edit-event-modal')">Edit</a>
+                                <a href="#" class="delete-button" onclick="confirmDelete('Guest Lecture: Future of AI')">Cancel</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="pagination">
+                    <a href="#">&laquo;</a>
+                    <a href="#" class="active">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">&raquo;</a>
+                </div>
+            </div>
+            
+            <div class="data-table-container">
+                <h2>Registration Management</h2>
+                <p>Select an event to manage registrations and attendance.</p>
+                <select class="form-group" style="margin-bottom: 15px; width: 100%; padding: 10px;">
+                    <option value="">

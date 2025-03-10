@@ -6,7 +6,8 @@
 }
 
 body {
-    background-color: #f0f2f5;
+    background: url('/static/images/home-bg.png');
+    background-size: cover;
 }
 
 .dashboard-container {
