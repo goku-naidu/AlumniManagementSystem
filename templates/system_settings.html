@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Settings - SJU Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/adminstyles.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-container">
+                <img src="/static/images/logo.png" alt="SJU Logo" class="logo">
+                <h2>SJU Admin</h2>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="{{ url_for('admin_dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ url_for('manage_users') }}">Manage Users</a></li>
+                    <li><a href="{{ url_for('manage_events') }}">Manage Events</a></li>
+                    <li><a href="#">Reports & Analytics</a></li>
+                    <li><a href="#">Email Communications</a></li>
+                    <li><a href="{{ url_for('system_settings') }}" class="active">System Settings</a></li>
+                    <li><a href="{{ url_for('logout') }}" class="logout-button">Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <header class="header">
+                <div>
+                    <h1>System Settings</h1>
+                    <p>Manage application settings and configurations</p>
+                </div>
+                <div class="user-info">
+                    <span>{{ session.get('email') }}</span>
+                    <a href="{{ url_for('logout') }}" class="button logout-button">Logout</a>
+                </div>
+            </header>
+
+            <!-- Flash Messages -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash-messages">
+                        {% for category, message in messages %}
+                            <div class="flash-message {{ category }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <div class="settings-container">
+                <!-- General Settings Form -->
+                <div class="settings-card">
+                    <h2>General Settings</h2>
+                    <form action="{{ url_for('update_system_settings') }}" method="POST">
+                        <div class="form-group">
+                            <label for="site_name">Site Name</label>
+                            <input type="text" id="site_name" name="site_name" value="{{ settings.site_name }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="site_description">Site Description</label>
+                            <textarea id="site_description" name="site_description" rows="3" required>{{ settings.site_description }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact_email">Contact Email</label>
+                            <input type="email" id="contact_email" name="contact_email" value="{{ settings.contact_email }}" required>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="maintenance_mode" name="maintenance_mode" {% if settings.maintenance_mode %}checked{% endif %}>
+                            <label for="maintenance_mode">Maintenance Mode</label>
+                            <p class="form-help">When enabled, only administrators can access the site.</p>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="registration_open" name="registration_open" {% if settings.registration_open %}checked{% endif %}>
+                            <label for="registration_open">Registration Open</label>
+                            <p class="form-help">Allow new alumni to register.</p>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="button primary-button">Save Changes</button>
+                            <button type="reset" class="button secondary-button">Reset</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Email Settings Form -->
+                <div class="settings-card">
+                    <h2>Email Settings</h2>
+                    <form action="{{ url_for('update_email_settings') }}" method="POST">
+                        <div class="form-group">
+                            <label for="smtp_server">SMTP Server</label>
+                            <input type="text" id="smtp_server" name="smtp_server" value="{{ email_settings.smtp_server }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="smtp_port">SMTP Port</label>
+                            <input type="number" id="smtp_port" name="smtp_port" value="{{ email_settings.smtp_port }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="smtp_username">SMTP Username</label>
+                            <input type="text" id="smtp_username" name="smtp_username" value="{{ email_settings.smtp_username }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="smtp_password">SMTP Password</label>
+                            <input type="password" id="smtp_password" name="smtp_password" placeholder="Enter SMTP password">
+                            <p class="form-help">Leave blank to keep the current password.</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="sender_email">Sender Email</label>
+                            <input type="email" id="sender_email" name="sender_email" value="{{ email_settings.sender_email }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="sender_name">Sender Name</label>
+                            <input type="text" id="sender_name" name="sender_name" value="{{ email_settings.sender_name }}">
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="button primary-button">Save Email Settings</button>
+                            <button type="button" class="button secondary-button" id="test-email-btn">Send Test Email</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Security Settings -->
+                <div class="settings-card">
+                    <h2>Security Settings</h2>
+                    <form action="{{ url_for('update_security_settings') }}" method="POST">
+                        <div class="form-group">
+                            <label for="session_timeout">Session Timeout (minutes)</label>
+                            <input type="number" id="session_timeout" name="session_timeout" value="{{ security_settings.session_timeout }}" min="5" max="1440">
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="require_2fa" name="require_2fa" {% if security_settings.require_2fa %}checked{% endif %}>
+                            <label for="require_2fa">Require Two-Factor Authentication</label>
+                            <p class="form-help">Require administrators to use 2FA when logging in.</p>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="login_attempts" name="login_attempts" {% if security_settings.login_attempts %}checked{% endif %}>
+                            <label for="login_attempts">Limit Login Attempts</label>
+                            <p class="form-help">Lock accounts after 5 failed login attempts.</p>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="button primary-button">Save Security Settings</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Backup & Restore -->
+                <div class="settings-card">
+                    <h2>Backup & Restore</h2>
+                    <div class="form-group">
+                        <button type="button" class="button primary-button" id="create-backup-btn">Create Backup</button>
+                        <p class="form-help">Create a backup of the database and uploaded files.</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="restore-backup">Restore from Backup</label>
+                        <div class="file-upload">
+                            <input type="file" id="restore-backup" name="restore-backup">
+                            <button type="button" class="button secondary-button" id="browse-btn">Browse</button>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="button warning-button" id="restore-btn">Restore System</button>
+                    </div>
+                    <div class="backup-list">
+                        <h3>Previous Backups</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Size</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for backup in backups %}
+                                <tr>
+                                    <td>{{ backup.date }}</td>
+                                    <td>{{ backup.size }}</td>
+                                    <td>
+                                        <a href="{{ url_for('download_backup', filename=backup.filename) }}" class="button small-button">Download</a>
+                                        <button type="button" class="button small-button danger-button" data-backup="{{ backup.id }}">Delete</button>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for settings page interactions -->
+    <script>
+        // Test Email Button
+        document.getElementById('test-email-btn').addEventListener('click', function() {
+            // You can implement AJAX to send a test email here
+            alert('Test email functionality will be implemented in the backend.');
+        });
+
+        // Backup Button
+        document.getElementById('create-backup-btn').addEventListener('click', function() {
+            // You can implement AJAX to create a backup here
+            alert('Backup functionality will be implemented in the backend.');
+        });
+
+        // Browse Button for File Upload
+        document.getElementById('browse-btn').addEventListener('click', function() {
+            document.getElementById('restore-backup').click();
+        });
+
+        // File input change handler
+        document.getElementById('restore-backup').addEventListener('change', function() {
+            const fileName = this.files[0]?.name || 'No file selected';
+            // Display the selected filename
+            this.parentElement.setAttribute('data-file', fileName);
+        });
+
+        // Restore Button
+        document.getElementById('restore-btn').addEventListener('click', function() {
+            const fileInput = document.getElementById('restore-backup');
+            if (!fileInput.files.length) {
+                alert('Please select a backup file first.');
+                return;
+            }
+            
+            if (confirm('WARNING: This will replace all current data with the backup. Continue?')) {
+                // You can implement form submission or AJAX for restore here
+                alert('Restore functionality will be implemented in the backend.');
+            }
+        });
+
+        // Close flash messages after 5 seconds
+        setTimeout(function() {
+            const flashMessages = document.querySelectorAll('.flash-message');
+            flashMessages.forEach(function(message) {
+                message.style.opacity = '0';
+                setTimeout(function() {
+                    message.remove();
+                }, 500);
+            });
+        }, 5000);
+    </script>
+</body>
+</html>
