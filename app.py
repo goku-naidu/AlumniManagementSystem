@@ -15,8 +15,8 @@ def register():
     if form.validate_on_submit():
         hashed_password = generate_password_hash(form.password.data, method='sha256')
         # Here you would typically save to a database
-        flash(f'Account created successfully!', 'success')
-        return redirect(url_for('alumni_login'))  # Redirect to alumni login after registration
+        flash('Account created successfully!', 'success')
+        return redirect(url_for('alumni_login'))  # Redirect to alumni login after successful registration
     return render_template('register.html', form=form)
 
 @app.route('/admin_login', methods=['GET', 'POST'])

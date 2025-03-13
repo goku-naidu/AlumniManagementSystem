@@ -8,6 +8,7 @@ body {
     background-image: url('/static/images/register-bg.png');
     background-size: cover; 
     background-position: center; 
+    background-attachment: fixed;
 }
 
 .register-container {
