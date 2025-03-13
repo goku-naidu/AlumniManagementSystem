@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - St. Joseph's University Alumni</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/alumnistyles.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2 class="sidebar-title">Alumni Portal</h2>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#profile" class="active">My Profile</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#network">Alumni Network</a></li>
+                    <li><a href="#jobs">Job Board</a></li>
+                    <li><a href="#mentorship">Mentorship</a></li>
+                    <li><a href="#donations">Give Back</a></li>
+                    <li><a href="#settings">Settings</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header class="header">
+                <h1>My Profile</h1>
+                <p>Manage your alumni information</p>
+            </header>
+
+            <div class="profile-container">
+                <div class="profile-header">
+                    <div class="profile-photo">
+                        <img src="{{ url_for('static', filename='images/profile-placeholder.jpg') }}" alt="Profile Photo">
+                        <button class="change-photo-btn">Change Photo</button>
+                    </div>
+                    <div class="profile-info">
+                        <h2>John Doe</h2>
+                        <p>Class of 2020 | Information Technology</p>
+                        <p><em>Profile last updated: January 15, 2025</em></p>
+                    </div>
+                </div>
+
+                <form class="profile-form">
+                    <div class="form-section">
+                        <h3>Personal Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" name="firstName" value="John">
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" value="Doe">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" value="john.doe@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" value="(555) 123-4567">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Current Location</label>
+                            <input type="text" id="location" name="location" value="New York, NY">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Education Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="degree">Degree</label>
+                                <input type="text" id="degree" name="degree" value="Bachelor of Science">
+                            </div>
+                            <div class="form-group">
+                                <label for="major">Major</label>
+                                <input type="text" id="major" name="major" value="Information Technology">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="graduationYear">Graduation Year</label>
+                                <input type="text" id="graduationYear" name="graduationYear" value="2020">
+                            </div>
+                            <div class="form-group">
+                                <label for="minor">Minor (if applicable)</label>
+                                <input type="text" id="minor" name="minor" value="Business Administration">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Professional Information</h3>
+                        <div class="form-group">
+                            <label for="currentPosition">Current Position</label>
+                            <input type="text" id="currentPosition" name="currentPosition" value="Senior Software Developer">
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company</label>
+                            <input type="text" id="company" name="company" value="Tech Solutions Inc.">
+                        </div>
+                        <div class="form-group">
+                            <label for="industry">Industry</label>
+                            <select id="industry" name="industry">
+                                <option value="technology" selected>Technology</option>
+                                <option value="healthcare">Healthcare</option>
+                                <option value="finance">Finance</option>
+                                <option value="education">Education</option>
+                                <option value="manufacturing">Manufacturing</option>
+                                <option value="retail">Retail</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="linkedin">LinkedIn Profile</label>
+                            <input type="url" id="linkedin" name="linkedin" value="https://linkedin.com/in/johndoe">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Alumni Involvement</h3>
+                        <div class="form-group">
+                            <label>Areas of Interest (select all that apply)</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="mentoring" name="interests" value="mentoring" checked>
+                                    <label for="mentoring">Mentoring Students</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="speaking" name="interests" value="speaking" checked>
+                                    <label for="speaking">Speaking at Events</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="recruiting" name="interests" value="recruiting">
+                                    <label for="recruiting">Recruiting Graduates</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="volunteering" name="interests" value="volunteering">
+                                    <label for="volunteering">Volunteering</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="bio">Professional Bio</label>
+                            <textarea id="bio" name="bio" rows="4">Software developer with 5 years of experience specializing in web applications and cloud technologies. Passionate about mentoring junior developers and contributing to open source projects.</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="save-button">Save Changes</button>
+                        <button type="reset" class="cancel-button">Cancel</button>
+                    </div>
+                </form>
+
+                <div class="privacy-settings">
+                    <h3>Privacy Settings</h3>
+                    <div class="privacy-option">
+                        <input type="checkbox" id="showEmail" name="showEmail" checked>
+                        <label for="showEmail">Make my email visible to other alumni</label>
+                    </div>
+                    <div class="privacy-option">
+                        <input type="checkbox" id="showPhone" name="showPhone">
+                        <label for="showPhone">Make my phone number visible to other alumni</label>
+                    </div>
+                    <div class="privacy-option">
+                        <input type="checkbox" id="showInDirectory" name="showInDirectory" checked>
+                        <label for="showInDirectory">Include me in the alumni directory</label>
+                    </div>
+                    <div class="privacy-option">
+                        <input type="checkbox" id="receiveNotifications" name="receiveNotifications" checked>
+                        <label for="receiveNotifications">Receive email notifications about events and opportunities</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

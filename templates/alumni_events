@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - St. Joseph's University Alumni</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/alumnistyles.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2 class="sidebar-title">Alumni Portal</h2>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#profile">My Profile</a></li>
+                    <li><a href="#events" class="active">Events</a></li>
+                    <li><a href="#network">Alumni Network</a></li>
+                    <li><a href="#jobs">Job Board</a></li>
+                    <li><a href="#mentorship">Mentorship</a></li>
+                    <li><a href="#donations">Give Back</a></li>
+                    <li><a href="#settings">Settings</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header class="header">
+                <h1>Alumni Events</h1>
+                <p>Stay connected with your alma mater</p>
+            </header>
+
+            <div class="events-filters">
+                <div class="search-filter">
+                    <input type="text" placeholder="Search events..." class="search-events">
+                </div>
+                <div class="filter-controls">
+                    <select class="event-type-filter">
+                        <option value="all">All Event Types</option>
+                        <option value="networking">Networking</option>
+                        <option value="career">Career Development</option>
+                        <option value="social">Social Gatherings</option>
+                        <option value="educational">Educational</option>
+                        <option value="fundraising">Fundraising</option>
+                    </select>
+                    <select class="event-location-filter">
+                        <option value="all">All Locations</option>
+                        <option value="campus">On Campus</option>
+                        <option value="virtual">Virtual</option>
+                        <option value="regional">Regional</option>
+                        <option value="international">International</option>
+                    </select>
+                </div>
+                <div class="view-controls">
+                    <button class="grid-view active"><i class="grid-icon"></i> Grid</button>
+                    <button class="list-view"><i class="list-icon"></i> List</button>
+                </div>
+            </div>
+
+            <div class="events-calendar">
+                <div class="calendar-header">
+                    <button class="prev-month">&lt;</button>
+                    <h3>March 2025</h3>
+                    <button class="next-month">&gt;</button>
+                </div>
+                <div class="calendar-grid">
+                    <!-- Calendar would go here - simplified for brevity -->
+                </div>
+            </div>
+
+            <div class="featured-events">
+                <h2>Featured Events</h2>
+                <div class="event-cards">
+                    <div class="event-card featured">
+                        <div class="event-image">
+                            <img src="{{ url_for('static', filename='images/reunion.jpg') }}" alt="Annual Reunion">
+                            <span class="event-badge">Featured</span>
+                        </div>
+                        <div class="event-details">
+                            <h3>Annual IT Alumni Meet</h3>
+                            <div class="event-meta">
+                                <p><i class="calendar-icon"></i> March 15, 2025</p>
+                                <p><i class="time-icon"></i> 5:00 PM - 8:00 PM</p>
+                                <p><i class="location-icon"></i> Main Campus, Johnson Hall</p>
+                            </div>
+                            <p class="event-description">Join fellow IT alumni for our annual gathering. Network with peers, hear from industry leaders, and reconnect with favorite professors.</p>
+                            <div class="event-actions">
+                                <button class="register-button">Register Now</button>
+                                <button class="save-event">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="upcoming-events-section">
+                <h2>Upcoming Events</h2>
+                <div class="event-cards">
+                    <div class="event-card">
+                        <div class="event-image">
+                            <img src="{{ url_for('static', filename='images/tech-talk.jpg') }}" alt="Tech Talk Series">
+                        </div>
+                        <div class="event-details">
+                            <h3>Tech Talk Series</h3>
+                            <div class="event-meta">
+                                <p><i class="calendar-icon"></i> April 2, 2025</p>
+                                <p><i class="time-icon"></i> 6:00 PM - 7:30 PM</p>
+                                <p><i class="location-icon"></i> Virtual Event</p>
+                            </div>
+                            <p class="event-description">Join us for an insightful discussion on emerging technologies with guest speaker Sarah Johnson, CTO of Future Technologies.</p>
+                            <div class="event-actions">
+                                <button class="register-button">Register Now</button>
+                                <button class="save-event">Save</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-image">
+                            <img src="{{ url_for('static', filename='images/networking.jpg') }}" alt="Career Networking Night">
+                        </div>
+                        <div class="event-details">
+                            <h3>Career Networking Night</h3>
+                            <div class="event-meta">
+                                <p><i class="calendar-icon"></i> April 20, 2025</p>
+                                <p><i class="time-icon"></i> 7:00 PM - 9:00 PM</p>
+                                <p><i class="location-icon"></i> Downtown Conference Center</p>
+                            </div>
+                            <p class="event-description">Network with professionals from various industries and explore new career opportunities. Bring plenty of business cards!</p>
+                            <div class="event-actions">
+                                <button class="register-button">Register Now</button>
+                                <button class="save-event">Save</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-image">
+                            <img src="{{ url_for('static', filename='images/workshop.jpg') }}" alt="Leadership Workshop">
+                        </div>
+                        <div class="event-details">
+                            <h3>Leadership Workshop</h3>
+                            <div class="event-meta">
+                                <p><i class="calendar-icon"></i> May 5, 2025</p>
+                                <p><i class="time-icon"></i> 9:00 AM - 12:00 PM</p>
+                                <p><i class="location-icon"></i> Business School, Room 305</p>
+                            </div>
+                            <p class="event-description">Develop your leadership skills with this hands-on workshop led by Professor Michael Robinson from the Business Department.</p>
+                            <div class="event-actions">
+                                <button class="register-button">Register Now</button>
+                                <button class="save-event">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="past-events">
+                <h2>Past Events</h2>
+                <div class="event-list">
+                    <div class="event-item past">
+                        <div class="event-date">
+                            <span class="month">Feb</span>
+                            <span class="day">15</span>
+                        </div>
+                        <div class="event-info">
+                            <h3>Alumni Homecoming Weekend</h3>
+                            <p><i class="location-icon"></i> Main Campus</p>
+                        </div>
+                        <div class="event-actions">
+                            <button class="view-photos">View Photos</button>
+                        </div>
+                    </div>
+
+                    <div class="event-item past">
+                        <div class="event-date">
+                            <span class="month">Jan</span>
+                            <span class="day">28</span>
+                        </div>
+                        <div class="event-info">
+                            <h3>New Year Networking Breakfast</h3>
+                            <p><i class="location-icon"></i> Downtown Cafe</p>
+                        </div>
+                        <div class="event-actions">
+                            <button class="view-photos">View Photos</button>
+                        </div>
+                    </div>
+
+                    <div class="event-item past">
+                        <div class="event-date">
+                            <span class="month">Dec</span>
+                            <span class="day">12</span>
+                        </div>
+                        <div class="event-info">
+                            <h3>Holiday Alumni Gathering</h3>
+                            <p><i class="location-icon"></i> Grand Hotel</p>
+                        </div>
+                        <div class="event-actions">
+                            <button class="view-photos">View Photos</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="view-more-container">
+                    <button class="view-more-events">View More Past Events</button>
+                </div>
+            </div>
+
+            <div class="host-event-section">
+                <h2>Host Your Own Alumni Event</h2>
+                <p>Interested in organizing an alumni event in your area? We'd love to help you connect with fellow graduates!</p>
+                <button class="propose-event-button">Propose an Event</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
