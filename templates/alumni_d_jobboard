@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Board - St. Joseph's University Alumni</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/alumnistyles.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2 class="sidebar-title">Alumni Portal</h2>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#profile">My Profile</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#network">Alumni Network</a></li>
+                    <li><a href="#jobs" class="active">Job Board</a></li>
+                    <li><a href="#mentorship">Mentorship</a></li>
+                    <li><a href="#donations">Give Back</a></li>
+                    <li><a href="#settings">Settings</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header class="header">
+                <h1>Alumni Job Board</h1>
+                <p>Exclusive career opportunities for St. Joseph's graduates</p>
+            </header>
+
+            <div class="job-board-actions">
+                <div class="search-container">
+                    <input type="text" placeholder="Search for jobs..." class="job-search">
+                    <button class="search-button">Search</button>
+                </div>
+                <div class="post-job-container">
+                    <button class="post-job-button">Post a Job</button>
+                </div>
+            </div>
+
+            <div class="job-filters">
+                <select class="job-filter" id="jobType">
+                    <option value="all">All Job Types</option>
+                    <option value="fulltime">Full-time</option>
+                    <option value="parttime">Part-time</option>
+                    <option value="contract">Contract</option>
+                    <option value="internship">Internship</option>
+                </select>
+                <select class="job-filter" id="jobLocation">
+                    <option value="all">All Locations</option>
+                    <option value="onsite">On-site</option>
+                    <option value="remote">Remote</option>
+                    <option value="hybrid">Hybrid</option>
+                </select>
+                <select class="job-filter" id="jobIndustry">
+                    <option value="all">All Industries</option>
+                    <option value="technology">Technology</option>
+                    <option value="finance">Finance</option>
+                    <option value="healthcare">Healthcare</option>
+                    <option value="education">Education</option>
+                    <option value="marketing">Marketing</option>
+                </select>
+                <select class="job-filter" id="jobExperience">
+                    <option value="all">All Experience Levels</option>
+                    <option value="entry">Entry Level</option>
+                    <option value="mid">Mid Level</option>
+                    <option value="senior">Senior Level</option>
+                    <option value="executive">Executive</option>
+                </select>
+            </div>
+
+            <div class="job-list">
+                <!-- Featured Job -->
+                <div class="job-card featured">
+                    <div class="job-badge">Featured</div>
+                    <div class="job-details">
+                        <h3 class="job-title">Senior Software Developer</h3>
+                        <div class="job-company">
+                            <img src="{{ url_for('static', filename='images/companies/techsolutions.png') }}" alt="Tech Solutions Inc." class="company-logo">
+                            <span class="company-name">Tech Solutions Inc.</span>
+                        </div>
+                        <div class="job-info">
+                            <span class="job-location"><i class="location-icon"></i> New York, NY (Hybrid)</span>
+                            <span class="job-type"><i class="job-type-icon"></i> Full-time</span>
+                            <span class="job-salary"><i class="salary-icon"></i> $120,000 - $150,000</span>
+                        </div>
+                        <div class="job-tags">
+                            <span class="job-tag">JavaScript</span>
+                            <span class="job-tag">React</span>
+                            <span class="job-tag">Node.js</span>
+                            <span class="job-tag">AWS</span>
+                        </div>
+                        <p class="job-description">
+                            Join our dynamic team developing cutting-edge web applications. We're looking for a senior developer with strong frontend and backend experience.
+                        </p>
+                        <div class="job-alumni-connection">
+                            <img src="{{ url_for('static', filename='images/alumni/profile1.jpg') }}" alt="Posted by Sarah" class="alumni-small-pic">
+                            <span>Posted by Sarah Johnson, Class of 2019</span>
+                        </div>
+                    </div>
+                    <div class="job-actions">
+                        <button class="apply-button">Apply Now</button>
+                        <button class="save-job-button">Save</button>
+                        <span class="job-posted-date">Posted 2 days ago</span>
+                    </div>
+                </div>
+
+                <!-- Regular Job Listings -->
+                <div class="job-card">
+                    <div class="job-details">
+                        <h3 class="job-title">Marketing Specialist</h3>
+                        <div class="job-company">
+                            <img src="{{ url_for('static', filename='images/companies/globalmarketing.png') }}" alt="Global Marketing Inc." class="company-logo">
+                            <span class="company-name">Global Marketing Inc.</span>
+                        </div>
+                        <div class="job-info">
+                            <span class="job-location"><i class="location-icon"></i> Remote</span>
+                            <span class="job-type"><i class="job-type-icon"></i> Full-time</span>
+                            <span class="job-salary"><i class="salary-icon"></i> $70,000 - $85,000</span>
+                        </div>
+                        <div class="job-tags">
+                            <span class="job-tag">Digital Marketing</span>
+                            <span class="job-tag">Social Media</span>
+                            <span class="job-tag">Content Strategy</span>
+                        </div>
+                        <p class="job-description">
+                            Looking for a marketing specialist to join our growing team. Will be responsible for digital campaigns and social media management.
+                        </p>
+                    </div>
+                    <div class="job-actions">
+                        <button class="apply-button">Apply Now</button>
+                        <button class="save-job-button">Save</button>
+                        <span class="job-posted-date">Posted 3 days ago</span>
+                    </div>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-details">
+                        <h3 class="job-title">Financial Analyst</h3>
+                        <div class="job-company">
+                            <img src="{{ url_for('static', filename='images/companies/firstfinance.png') }}" alt="First Finance" class="company-logo">
+                            <span class="company-name">First Finance</span>
+                        </div>
+                        <div class="job-info">
+                            <span class="job-location"><i class="location-icon"></i> Boston, MA</span>
+                            <span class="job-type"><i class="job-type-icon"></i> Full-time</span>
+                            <span class="job-salary"><i class="salary-icon"></i> $85,000 - $95,000</span>
+                        </div>
+                        <div class="job-tags">
+                            <span class="job-tag">Financial Analysis</span>
+                            <span class="job-tag">Excel</span>
+                            <span class="job-tag">Forecasting</span>
+                        </div>
+                        <p class="job-description">
+                            Seeking a detail-oriented financial analyst to join our team. Will be responsible for financial reporting, analysis, and forecasting.
+                        </p>
+                        <div class="job-alumni-connection">
+                            <img src="{{ url_for('static', filename='images/alumni/profile4.jpg') }}" alt="Posted by Robert" class="alumni-small-pic">
+                            <span>Posted by Robert Williams, Class of 2018</span>
+                        </div>
+                    </div>
+                    <div class="job-actions">
+                        <button class="apply-button">Apply Now</button>
+                        <button class="save-job-button">Save</button>
+                        <span class="job-posted-date">Posted 5 days ago</span>
+                    </div>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-details">
+                        <h3 class="job-title">UX Designer</h3>
+                        <div class="job-company">
+                            <img src="{{ url_for('static', filename='images/companies/designstudio.png') }}" alt="Design Studio" class="company-logo">
+                            <span class="company-name">Design Studio</span>
+                        </div>
+                        <div class="job-info">
+                            <span class="job-location"><i class="location-icon"></i> Seattle, WA (Hybrid)</span>
+                            <span class="job-type"><i class="job-type-icon"></i> Full-time</span>
+                            <span class="job-salary"><i class="salary-icon"></i> $90,000 - $110,000</span>
+                        </div>
+                        <div class="job-tags">
+                            <span class="job-tag">UX Design</span>
+                            <span class="job-tag">User Research</span>
+                            <span class="job-tag">Figma</span>
+                        </div>
+                        <p class="job-description">
+                            Join our creative team as a UX Designer. Ideal candidates will have experience with user research and creating intuitive interfaces.
+                        </p>
+                    </div>
+                    <div class="job-actions">
+                        <button class="apply-button">Apply Now</button>
+                        <button class="save-job-button">Save</button>
+                        <span class="job-posted-date">Posted 1 week ago</span>
+                    </div>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-details">
+                        <h3 class="job-title">IT Support Specialist</h3>
+                        <div class="job-company">
+                            <img src="{{ url_for('static', filename='images/companies/itservices.png') }}" alt="IT Services Co." class="company-logo">
+                            <span class="company-name">IT Services Co.</span>
+                        </div>
+                        <div class="job-info">
+                            <span class="job-location"><i class="location-icon"></i> Chicago, IL</span>
+                            <span class="job-type"><i class="job-type-icon"></i> Full-time</span>
+                            <span class="job-salary"><i class="salary-icon"></i> $60,000 - $75,000</span>
+                        </div>
+                        <div class="job-tags">
+                            <span class="job-tag">Technical Support</span>
+                            <span class="job-tag">Networking</span>
+                            <span class="job-tag">Windows</span>
+                        </div>
+                        <p class="job-description">
+                            Looking for an IT Support Specialist to provide technical assistance to our clients. Troubleshooting and problem-solving skills are essential.
+                        </p>
+                    </div>
+                    <div class="job-actions">
+                        <button class="apply-button">Apply Now</button>
+                        <button class="save-job-button">Save</button>
+                        <span class="job-posted-date">Posted 1 week ago</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pagination">
+                <button class="page-button active">1</button>
+                <button class="page-button">2</button>
+                <button class="page-button">3</button>
+                <span class="ellipsis">...</span>
+                <button class="page-button">8</button>
+                <button class="next-page">Next &raquo;</button>
+            </div>
+
+            <div class="job-board-footer">
+                <div class="job-alerts">
+                    <h3>Stay Updated on New Opportunities</h3>
+                    <p>Receive tailored job alerts directly to your inbox</p>
+                    <div class="job-alert-form">
+                        <input type="email" placeholder="Enter your email" class="job-alert-email">
+                        <button class="job-alert-button">Create Job Alert</button>
+                    </div>
+                </div>
+                <div class="resume-upload">
+                    <h3>Upload Your Resume</h3>
+                    <p>Let employers find you by keeping your resume updated</p>
+                    <button class="upload-resume-button">Upload Resume</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

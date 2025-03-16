@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Network - St. Joseph's University</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/alumnistyles.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2 class="sidebar-title">Alumni Portal</h2>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#profile">My Profile</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#network" class="active">Alumni Network</a></li>
+                    <li><a href="#jobs">Job Board</a></li>
+                    <li><a href="#mentorship">Mentorship</a></li>
+                    <li><a href="#donations">Give Back</a></li>
+                    <li><a href="#settings">Settings</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header class="header">
+                <h1>Alumni Network</h1>
+                <p>Connect with fellow St. Joseph's graduates</p>
+            </header>
+
+            <div class="network-stats">
+                <div class="stat-card">
+                    <div class="stat-number">5,280</div>
+                    <div class="stat-label">Total Alumni</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">152</div>
+                    <div class="stat-label">Your Connections</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">42</div>
+                    <div class="stat-label">From Your Class</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">18</div>
+                    <div class="stat-label">In Your Field</div>
+                </div>
+            </div>
+
+            <div class="network-search-container">
+                <div class="search-filters">
+                    <div class="search-input-group">
+                        <input type="text" class="search-input" placeholder="Search alumni by name, company, or location...">
+                        <button class="search-button">Search</button>
+                    </div>
+                    <div class="filter-options">
+                        <select class="filter-dropdown" id="filterGradYear">
+                            <option value="">Graduation Year</option>
+                            <option value="2023-2025">2023-2025</option>
+                            <option value="2020-2022">2020-2022</option>
+                            <option value="2015-2019">2015-2019</option>
+                            <option value="2010-2014">2010-2014</option>
+                            <option value="2000-2009">2000-2009</option>
+                            <option value="1990-1999">1990-1999</option>
+                            <option value="before-1990">Before 1990</option>
+                        </select>
+                        <select class="filter-dropdown" id="filterMajor">
+                            <option value="">Field of Study</option>
+                            <option value="business">Business</option>
+                            <option value="it">Information Technology</option>
+                            <option value="engineering">Engineering</option>
+                            <option value="humanities">Humanities</option>
+                            <option value="science">Sciences</option>
+                            <option value="education">Education</option>
+                            <option value="arts">Arts</option>
+                            <option value="health">Health Sciences</option>
+                        </select>
+                        <select class="filter-dropdown" id="filterIndustry">
+                            <option value="">Industry</option>
+                            <option value="technology">Technology</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="finance">Finance</option>
+                            <option value="education">Education</option>
+                            <option value="government">Government</option>
+                            <option value="nonprofit">Non-Profit</option>
+                            <option value="retail">Retail</option>
+                            <option value="manufacturing">Manufacturing</option>
+                        </select>
+                        <select class="filter-dropdown" id="filterLocation">
+                            <option value="">Location</option>
+                            <option value="northeast">Northeast US</option>
+                            <option value="southeast">Southeast US</option>
+                            <option value="midwest">Midwest US</option>
+                            <option value="west">Western US</option>
+                            <option value="southwest">Southwest US</option>
+                            <option value="international">International</option>
+                        </select>
+                    </div>
+                    <div class="advanced-filters-toggle">
+                        <button id="toggleAdvancedFilters">Advanced Filters</button>
+                    </div>
+                </div>
+                <div class="advanced-filters" style="display: none;">
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <label>Available for Mentoring</label>
+                            <div class="radio-options">
+                                <label><input type="radio" name="mentoring" value="yes"> Yes</label>
+                                <label><input type="radio" name="mentoring" value="no"> No</label>
+                                <label><input type="radio" name="mentoring" value="any" checked> Any</label>
+                            </div>
+                        </div>
+                        <div class="filter-group">
+                            <label>Available for Networking</label>
+                            <div class="radio-options">
+                                <label><input type="radio" name="networking" value="yes"> Yes</label>
+                                <label><input type="radio" name="networking" value="no"> No</label>
+                                <label><input type="radio" name="networking" value="any" checked> Any</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <label>Clubs & Organizations</label>
+                            <select class="multi-select" id="filterClubs" multiple>
+                                <option value="student-government">Student Government</option>
+                                <option value="greek-life">Greek Life</option>
+                                <option value="academic-clubs">Academic Clubs</option>
+                                <option value="athletics">Athletics</option>
+                                <option value="arts-media">Arts & Media</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Job Opportunities</label>
+                            <div class="radio-options">
+                                <label><input type="radio" name="jobs" value="yes"> Has Openings</label>
+                                <label><input type="radio" name="jobs" value="no"> No Openings</label>
+                                <label><input type="radio" name="jobs" value="any" checked> Any</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-actions">
+                        <button id="applyAdvancedFilters" class="primary-button">Apply Filters</button>
+                        <button id="resetAdvancedFilters" class="secondary-button">Reset</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="view-toggle">
+                <button class="view-button active" data-view="grid"><i class="grid-icon"></i> Grid View</button>
+                <button class="view-button" data-view="list"><i class="list-icon"></i> List View</button>
+                <button class="view-button" data-view="map"><i class="map-icon"></i> Map View</button>
+            </div>
+
+            <div class="network-results-container grid-view">
+                <!-- Alumni Grid View -->
+                <div class="alumni-grid">
+                    <!-- Alumni Card 1 -->
+                    <div class="alumni-card">
+                        <div class="alumni-header">
+                            <div class="alumni-photo">
+                                <img src="{{ url_for('static', filename='images/alumni/profile1.jpg') }}" alt="Sarah Johnson">
+                            </div>
+                            <div class="alumni-name">
+                                <h3>Sarah Johnson</h3>
+                                <p class="alumni-location">New York, NY</p>
+                            </div>
+                        </div>
+                        <div class="alumni-info">
+                            <p class="alumni-class">Class of 2019</p>
+                            <p class="alumni-major">Information Technology</p>
+                            <p class="alumni-position">Software Engineer</p>
+                            <p class="alumni-company">Google</p>
+                        </div>
+                        <div class="alumni-badges">
+                            <span class="badge mentor">Mentor</span>
+                            <span class="badge job-openings">Hiring</span>
+                        </div>
+                        <div class="alumni-actions">
+                            <button class="connect-button">Connect</button>
+                            <button class="message-button">Message</button>
+                            <button class="view-profile-button">View Profile</button>
+                        </div>
+                    </div>
+
+                    <!-- Alumni Card 2 -->
+                    <div class="alumni-card">
+                        <div class="alumni-header">
+                            <div class="alumni-photo">
+                                <img src="{{ url_for('static', filename='images/alumni/profile2.jpg') }}" alt="Michael Rodriguez">
+                            </div>
+                            <div class="alumni-name">
+                                <h3>Michael Rodriguez</h3>
+                                <p class="alumni-location">Chicago, IL</p>
+                            </div>
+                        </div>
+                        <div class="alumni-info">
+                            <p class="alumni-class">Class of 2015</p>
+                            <p class="alumni-major">Business Administration</p>
+                            <p class="alumni-position">Marketing Director</p>
+                            <p class="alumni-company">Midwest Marketing Inc.</p>
+                        </div>
+                        <div class="alumni-badges">
+                            <span class="badge speaker">Speaker</span>
+                        </div>
+                        <div class="alumni-actions">
+                            <button class="connect-button">Connect</button>
+                            <button class="message-button">Message</button>
+                            <button class="view-profile-button">View Profile</button>
+                        </div>
+                    </div>
+
+                    <!-- Alumni Card 3 -->
+                    <div class="alumni-card">
+                        <div class="alumni-header">
+                            <div class="alumni-photo">
+                                <img src="{{ url_for('static', filename='images/alumni/profile3.jpg') }}" alt="Jennifer Chen">
+                            </div>
+                            <div class="alumni-name">
+                                <h3>Jennifer Chen</h3>
+                                <p class="alumni-location">San Francisco, CA</p>
+                            </div>
+                        </div>
+                        <div class="alumni-info">
+                            <p class="alumni-class">Class of 2020</p>
+                            <p class="alumni-major">Information Technology</p>
+                            <p class="alumni-position">Product Manager</p>
+                            <p class="alumni-company">Startup Hub</p>
+                        </div>
+                        <div class="alumni-badges">
+                            <span class="badge mentor">Mentor</span>
+                            <span class="badge networking">Networking</span>
+                        </div>
+                        <div class="alumni-actions">
+                            <button class="connect-button connected">Connected</button>
+                            <button class="message-button">Message</button>
+                            <button class="view-profile-button">View Profile</button>
+                        </div>
+                    </div>
+
+                    <!-- Alumni Card 4 -->
+                    <div class="alumni-card">
+                        <div class="alumni-header">
+                            <div class="alumni-photo">
+                                <img src="{{ url_for('static', filename='images/alumni/profile4.jpg') }}" alt="Robert Williams">
+                            </div>
+                            <div class="alumni-name">
+                                <h3>Robert Williams</h3>
+                                <p class="alumni-location">Boston, MA</p>
+                            </div>
+                        </div>
+                        <div class="alumni-info">
+                            <p class="alumni-class">Class of 2018</p>
+                            <p class="alumni-major">Finance</p>
+                            <p class="alumni-position">Financial Analyst</p>
+                            <p class="alumni-company">Eastern Bank</p>
+                        </div>
+                        <div class="alumni-badges">
+                            <span class="badge job-openings">Hiring</span>
+                        </div>
+                        <div class="alumni-actions">
+                            <button class="connect-button">Connect</button>
+                            <button class="message-button">Message</button>
+                            <button class="view-profile-button">View Profile</button>
+                        </div>
+                    </div>
+
+                    <!-- Alumni Card 5 -->
+                    <div class="alumni-card">
+                        <div class="alumni-header">
+                            <div class="alumni-photo">
+                                <img src="{{ url_for('static', filename='images/alumni/profile5.jpg') }}" alt="Emily Davis">
+                            </div>
+                            <div class="alumni-name">
+                                <h3>Emily Davis</h3>
+                                <p class="alumni-location">Seattle, WA</p>
+                            </div>
+                        </div>
+                        <div class="alumni-info">
+                            <p class="alumni-class">Class of 2020</p>
+                            <p class="alumni-major">Information Technology</p>
+                            <p class="alumni-position">UX Designer</p>
+                            <p class="alumni-company">Tech Design Solutions</p>
+                        </div>
+                        <div class="alumni-badges">
+                            <span class="badge networking">Networking</span>
+                        </div>
+                        <div class="alumni-actions">
+                            <button class="connect-button">Connect</button>
+                            <button class="message-button">Message</button>
+                            <button class="view-profile-button">View Profile</button>
+                        </div>
+                    </div>
+
+                    <!-- Alumni Card 6 -->
+                    <div class="alumni-card">
+                        <div class="alumni-header">
+                            <div class="alumni-photo">
+                                <img src="{{ url_for('static', filename='images/alumni/profile6.jpg') }}" alt="David Thompson">
+                            </div>
+                            <div class="alumni-name">
+                                <h3>David Thompson</h3>
+                                <p class="alumni-location">Austin, TX</p>
+                            </div>
+                        </div>
+                        <div class="alumni-info">
+                            <p class="alumni-class">Class of 2017</p>
+                            <p class="alumni-major">Computer Science</p>
+                            <p class="alumni-position">Senior Developer</p>
+                            <p class="alumni-company">Texas Tech Innovations</p>
+                        </div>
+                        <div class="alumni-badges">
+                            <span class="badge mentor">Mentor</span>
+                            <span class="badge speaker">Speaker</span>
+                        </div>
+                        <div class="alumni-actions">
+                            <button class="connect-button connected">Connected</button>
+                            <button class="message-button">Message</button>
+                            <button class="view-profile-button">View Profile</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="page-button active">1</button>
+                    <button class="page-button">2</button>
+                    <button class="page-button">3</button>
+                    <button class="page-button">4</button>
+                    <button class="page-button">5</button>
+                    <span class="ellipsis">...</span>
+                    <button class="page-button">12</button>
+                    <button class="next-page">Next &raquo;</button>
+                </div>
+            </div>
+
+            <div class="network-map-view" style="display: none;">
+                <!-- Map view would go here - requires JavaScript integration -->
+                <div class="map-placeholder">
+                    <img src="{{ url_for('static', filename='images/alumni-map.jpg') }}" alt="Alumni Map">
+                    <p>Interactive map showing alumni locations around the world</p>
+                </div>
+            </div>
+
+            <div class="recommendations-section">
+                <h2>People You May Know</h2>
+                <div class="recommendations-container">
+                    <div class="recommendation-card">
+                        <div class="recommendation-photo">
+                            <img src="{{ url_for('static', filename='images/alumni/rec1.jpg') }}" alt="Lisa Brown">
+                        </div>
+                        <div class="recommendation-info">
+                            <h3>Lisa Brown</h3>
+                            <p>Class of 2020 | IT</p>
+                            <p>Developer at Tech Solutions</p>
+                            <p><small>5 mutual connections</small></p>
+                        </div>
+                        <button class="connect-button small">Connect</button>
+                    </div>
+
+                    <div class="recommendation-card">
+                        <div class="recommendation-photo">
+                            <img src="{{ url_for('static', filename='images/alumni/rec2.jpg') }}" alt="James Wilson">
+                        </div>
+                        <div class="recommendation-info">
+                            <h3>James Wilson</h3>
+                            <p>Class of 2019 | IT</p>
+                            <p>Data Analyst at Analytics Inc.</p>
+                            <p><small>3 mutual connections</small></p>
+                        </div>
+                        <button class="connect-button small">Connect</button>
+                    </div>
+
+                    <div class="recommendation-card">
+                        <div class="recommendation-photo">
+                            <img src="{{ url_for('static', filename='images/alumni/rec3.jpg') }}" alt="Michelle Garcia">
+                        </div>
+                        <div class="recommendation-info">
+                            <h3>Michelle Garcia</h3>
+                            <p>Class of 2018 | IT</p>
+                            <p>System Analyst at Global Tech</p>
+                            <p><small>7 mutual connections</small></p>
+                        </div>
+                        <button class="connect-button small">Connect</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="network-groups">
+                <h2>Alumni Groups</h2>
+                <div class="groups-container">
+                    <div class="group-card">
+                        <div class="group-header">
+                            <img src="{{ url_for('static', filename='images/groups/tech.jpg') }}" alt="IT Professionals Group">
+                            <h3>IT Professionals</h3>
+                        </div>
+                        <p class="group-description">A community for St. Joseph's alumni working in the IT and tech sectors.</p>
+                        <p class="group-members">128 members</p>
+                        <button class="join-group-button">Join Group</button>
+                    </div>
+
+                    <div class="group-card">
+                        <div class="group-header">
+                            <img src="{{ url_for('static', filename='images/groups/entrepreneurs.jpg') }}" alt="Entrepreneurs Network">
+                            <h3>Entrepreneurs Network</h3>
+                        </div>
+                        <p class="group-description">Connect with fellow alumni who have started their own businesses.</p>
+                        <p class="group-members">86 members</p>
+                        <button class="join-group-button joined">Member</button>
+                    </div>
+
+                    <div class="group-card">
+                        <div class="group-header">
+                            <img src="{{ url_for('static', filename='images/groups/class2020.jpg') }}" alt="Class of 2020">
+                            <h3>Class of 2020</h3>
+                        </div>
+                        <p class="group-description">Stay connected with your graduating class and plan reunions.</p>
+                        <p class="group-members">156 members</p>
+                        <button class="join-group-button joined">Member</button>
+                    </div>
+
+                    <div class="group-card">
+                        <div class="group-header">
+                            <img src="{{ url_for('static', filename='images/groups/nyc.jpg') }}" alt="New York City Alumni">
+                            <h3>NYC Alumni</h3>
+                        </div>
+                        <p class="group-description">For alumni living and working in the greater New York City area.</p>
+                        <p class="group-members">94 members</p>
+                        <button class="join-group-button">Join Group</button>
+                    </div>
+                </div>
+
+                <div class="view-all-container">
+                    <button class="view-all-button">View All Groups</button>
+                    <button class="create-group-button">Create New Group</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
