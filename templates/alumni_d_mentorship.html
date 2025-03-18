@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentorship - St. Joseph's University Alumni Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/alumnistyles.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2 class="sidebar-title">Alumni Portal</h2>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#profile">My Profile</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#network">Alumni Network</a></li>
+                    <li><a href="#jobs">Job Board</a></li>
+                    <li><a href="#mentorship" class="active">Mentorship</a></li>
+                    <li><a href="#donations">Give Back</a></li>
+                    <li><a href="#settings">Settings</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header class="header">
+                <h1>Mentorship Program</h1>
+                <p>Connect, Guide, Inspire</p>
+            </header>
+
+            <div class="dashboard-cards">
+                <div class="card">
+                    <h3>My Role</h3>
+                    <p>Mentor</p>
+                </div>
+                <div class="card">
+                    <h3>Active Mentees</h3>
+                    <p>2 Students</p>
+                </div>
+                <div class="card">
+                    <h3>Total Hours</h3>
+                    <p>24 Hours</p>
+                </div>
+                <div class="card">
+                    <h3>Available Slots</h3>
+                    <p>1 Remaining</p>
+                </div>
+            </div>
+
+            <section class="mentorship-actions">
+                <h2>Mentorship Actions</h2>
+                <div class="action-buttons">
+                    <button class="primary-button">Find Mentees</button>
+                    <button class="secondary-button">Schedule Meeting</button>
+                    <button class="secondary-button">Log Hours</button>
+                    <button class="secondary-button">Resources</button>
+                </div>
+            </section>
+
+            <section class="current-mentees">
+                <h2>Current Mentees</h2>
+                <div class="mentee-list">
+                    <div class="mentee-item">
+                        <div class="mentee-info">
+                            <h3>Sarah Johnson</h3>
+                            <p>Junior Year | Information Technology</p>
+                            <p>Focus: Web Development, Cloud Computing</p>
+                            <p>Mentorship Started: January 10, 2025</p>
+                        </div>
+                        <div class="mentee-actions">
+                            <button class="action-button">Message</button>
+                            <button class="action-button">Schedule</button>
+                            <button class="action-button">View Progress</button>
+                        </div>
+                    </div>
+                    
+                    <div class="mentee-item">
+                        <div class="mentee-info">
+                            <h3>Michael Chen</h3>
+                            <p>Senior Year | Computer Science</p>
+                            <p>Focus: Software Engineering, Machine Learning</p>
+                            <p>Mentorship Started: February 5, 2025</p>
+                        </div>
+                        <div class="mentee-actions">
+                            <button class="action-button">Message</button>
+                            <button class="action-button">Schedule</button>
+                            <button class="action-button">View Progress</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mentorship-resources">
+                <h2>Mentorship Resources</h2>
+                <div class="resources-grid">
+                    <div class="resource-item">
+                        <h3>Mentorship Guidelines</h3>
+                        <p>Best practices for effective mentoring relationships</p>
+                        <a href="#" class="resource-link">View Guidelines</a>
+                    </div>
+                    <div class="resource-item">
+                        <h3>Career Development Tools</h3>
+                        <p>Resources to help guide mentees in career planning</p>
+                        <a href="#" class="resource-link">Access Tools</a>
+                    </div>
+                    <div class="resource-item">
+                        <h3>Mentorship Workshops</h3>
+                        <p>Upcoming workshops to enhance mentoring skills</p>
+                        <a href="#" class="resource-link">View Schedule</a>
+                    </div>
+                    <div class="resource-item">
+                        <h3>Success Stories</h3>
+                        <p>Inspirational mentorship journeys</p>
+                        <a href="#" class="resource-link">Read Stories</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="upcoming-mentorship-events">
+                <h2>Mentorship Events</h2>
+                <div class="event-item">
+                    <h3>Mentor-Mentee Mixer</h3>
+                    <p>Date: March 25, 2025</p>
+                    <p>Location: Student Center</p>
+                    <a href="#" class="event-link">RSVP</a>
+                </div>
+                <div class="event-item">
+                    <h3>Mentorship Excellence Workshop</h3>
+                    <p>Date: April 10, 2025</p>
+                    <p>Location: Virtual Event</p>
+                    <a href="#" class="event-link">Register</a>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - St. Joseph's University Alumni Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/alumnistyles.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2 class="sidebar-title">Alumni Portal</h2>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#profile">My Profile</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#network">Alumni Network</a></li>
+                    <li><a href="#jobs">Job Board</a></li>
+                    <li><a href="#mentorship">Mentorship</a></li>
+                    <li><a href="#donations">Give Back</a></li>
+                    <li><a href="#settings" class="active">Settings</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header class="header">
+                <h1>Account Settings</h1>
+                <p>Manage your preferences and account details</p>
+            </header>
+
+            <div class="settings-container">
+                <!-- Settings Navigation Tabs -->
+                <div class="settings-tabs">
+                    <button class="tab-button active" data-tab="account">Account</button>
+                    <button class="tab-button" data-tab="privacy">Privacy</button>
+                    <button class="tab-button" data-tab="notifications">Notifications</button>
+                    <button class="tab-button" data-tab="communication">Communication</button>
+                    <button class="tab-button" data-tab="security">Security</button>
+                </div>
+
+                <!-- Account Settings Section -->
+                <div class="settings-section active" id="account-settings">
+                    <h2>Account Information</h2>
+                    
+                    <form class="settings-form">
+                        <div class="profile-picture-section">
+                            <div class="profile-picture">
+                                <img src="{{ url_for('static', filename='images/default-avatar.png') }}" alt="Profile Picture">
+                            </div>
+                            <div class="profile-picture-controls">
+                                <button type="button" class="secondary-button">Change Photo</button>
+                                <button type="button" class="text-button">Remove</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name" value="John" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name" value="Doe" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" value="john.doe@example.com" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" value="(555) 123-4567" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="graduation-year">Graduation Year</label>
+                            <input type="number" id="graduation-year" value="2020" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="degree">Degree</label>
+                            <input type="text" id="degree" value="Bachelor of Science" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="major">Major</label>
+                            <input type="text" id="major" value="Information Technology" class="form-control">
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="primary-button">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Privacy Settings Section -->
+                <div class="settings-section" id="privacy-settings">
+                    <h2>Privacy Settings</h2>
+                    
+                    <div class="settings-group">
+                        <h3>Profile Visibility</h3>
+                        <div class="toggle-option">
+                            <span>Show my profile in Alumni Directory</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-option">
+                            <span>Allow other alumni to message me</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-option">
+                            <span>Show my current position and company</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-group">
+                        <h3>Information Sharing</h3>
+                        <div class="toggle-option">
+                            <span>Share my email with other alumni</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-option">
+                            <span>Share my phone number with other alumni</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-option">
+                            <span>Show my mentorship participation</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="primary-button">Save Privacy Settings</button>
+                    </div>
+                </div>
+
+                <!-- Notifications Settings Section -->
+                <div class="settings-section" id="notifications-settings">
+                    <h2>Notification Preferences</h2>
+                    
+                    <div class="settings-group">
+                        <h3>Email Notifications</h3>
+                        <div class="toggle-option">
+                            <span>Event invitations and updates</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-option">
+                            <span>Job postings that match your profile</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-option">
+                            <span>Mentorship opportunities</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-option">
+                            <span>Alumni network connection requests</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-option">
+                            <span>University news and updates</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-group">
+                        <h3>Push Notifications</h3>
+                        <div class="toggle-option">
+                            <span>New messages from alumni</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-option">
+                            <span>Event reminders</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-option">
+                            <span>Mentorship session reminders</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="primary-button">Save Notification Settings</button>
+                    </div>
+                </div>
+
+                <!-- Communication Settings Section -->
+                <div class="settings-section" id="communication-settings">
+                    <h2>Communication Preferences</h2>
+                    
+                    <div class="settings-group">
+                        <h3>Email Frequency</h3>
+                        <div class="radio-options">
+                            <div class="radio-option">
+                                <input type="radio" id="email-daily" name="email-frequency">
+                                <label for="email-daily">Daily digest</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="email-weekly" name="email-frequency" checked>
+                                <label for="email-weekly">Weekly digest</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="email-monthly" name="email-frequency">
+                                <label for="email-monthly">Monthly digest</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="email-immediate" name="email-frequency">
+                                <label for="email-immediate">Send immediately (no digest)</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-group">
+                        <h3>Newsletter Subscriptions</h3>
+                        <div class="toggle-option">
+                            <span>Alumni Newsletter</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-option">
+                            <span>Department Newsletter (IT)</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-option">
+                            <span>Career Development Updates</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-option">
+                            <span>Fundraising Campaigns</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="primary-button">Save Communication Settings</button>
+                    </div>
+                </div>
+
+                <!-- Security Settings Section -->
+                <div class="settings-section" id="security-settings">
+                    <h2>Security Settings</h2>
+                    
+                    <div class="settings-group">
+                        <h3>Change Password</h3>
+                        <div class="form-group">
+                            <label for="current-password">Current Password</label>
+                            <input type="password" id="current-password" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="new-password">New Password</label>
+                            <input type="password" id="new-password" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm New Password</label>
+                            <input type="password" id="confirm-password" class="form-control">
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="secondary-button">Update Password</button>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-group">
+                        <h3>Two-Factor Authentication</h3>
+                        <div class="toggle-option">
+                            <span>Enable Two-Factor Authentication</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <p class="settings-description">Add an extra layer of security to your account by requiring a verification code in addition to your password when signing in.</p>
+                        <div class="form-actions">
+                            <button type="button" class="secondary-button" disabled>Set Up Two-Factor</button>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-group">
+                        <h3>Login Sessions</h3>
+                        <div class="sessions-list">
+                            <div class="session-item">
+                                <div class="session-info">
+                                    <strong>Current Session</strong>
+                                    <p>Windows 10 • Chrome • New York, NY</p>
+                                    <p>Started: March 18, 2025 9:45 AM</p>
+                                </div>
+                                <div class="session-action">
+                                    <span class="active-badge">Active</span>
+                                </div>
+                            </div>
+                            <div class="session-item">
+                                <div class="session-info">
+                                    <strong>Previous Session</strong>
+                                    <p>iPhone 15 • Safari • New York, NY</p>
+                                    <p>Last active: March 17, 2025 8:30 PM</p>
+                                </div>
+                                <div class="session-action">
+                                    <button class="text-button">Log Out</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="warning-button">Log Out of All Devices</button>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-group">
+                        <h3>Account Actions</h3>
+                        <div class="form-actions">
+                            <button type="button" class="danger-button">Deactivate Account</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <section class="data-export">
+                <h2>Data & Privacy</h2>
+                <p>You can request a copy of your personal data or delete your account information.</p>
+                <div class="data-actions">
+                    <button class="secondary-button">Download My Data</button>
+                    <button class="text-button">Privacy Policy</button>
+                    <button class="text-button">Terms of Service</button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Simple JavaScript for tab functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const settingsSections = document.querySelectorAll('.settings-section');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons and sections
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    settingsSections.forEach(section => section.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show corresponding section
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId + '-settings').classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

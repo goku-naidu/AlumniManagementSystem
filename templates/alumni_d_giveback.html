@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Give Back - St. Joseph's University Alumni Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/alumnistyles.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2 class="sidebar-title">Alumni Portal</h2>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#profile">My Profile</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#network">Alumni Network</a></li>
+                    <li><a href="#jobs">Job Board</a></li>
+                    <li><a href="#mentorship">Mentorship</a></li>
+                    <li><a href="#donations" class="active">Give Back</a></li>
+                    <li><a href="#settings">Settings</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header class="header">
+                <h1>Give Back to St. Joseph's</h1>
+                <p>Your support helps shape the future of education</p>
+            </header>
+
+            <div class="dashboard-cards">
+                <div class="card">
+                    <h3>Your Impact</h3>
+                    <p>$2,500 Contributed</p>
+                </div>
+                <div class="card">
+                    <h3>Current Campaign</h3>
+                    <p>STEM Building Fund</p>
+                </div>
+                <div class="card">
+                    <h3>Community Goal</h3>
+                    <p>72% Achieved</p>
+                </div>
+                <div class="card">
+                    <h3>Donor Status</h3>
+                    <p>Silver Contributor</p>
+                </div>
+            </div>
+
+            <section class="impact-section">
+                <h2>Your Impact at St. Joseph's</h2>
+                <div class="impact-progress">
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 72%;"></div>
+                    </div>
+                    <p>$720,000 raised of $1,000,000 goal for the STEM Building Fund</p>
+                </div>
+                <div class="impact-description">
+                    <p>Your generous contributions are helping to build the new Science, Technology, Engineering, and Mathematics facility that will equip the next generation of innovators with cutting-edge resources and technology.</p>
+                </div>
+            </section>
+
+            <section class="giving-options">
+                <h2>Ways to Give</h2>
+                <div class="options-grid">
+                    <div class="option-item">
+                        <h3>One-Time Donation</h3>
+                        <p>Make an immediate impact with a single contribution</p>
+                        <button class="primary-button">Donate Now</button>
+                    </div>
+                    <div class="option-item">
+                        <h3>Monthly Giving</h3>
+                        <p>Support consistently through recurring donations</p>
+                        <button class="secondary-button">Set Up Monthly</button>
+                    </div>
+                    <div class="option-item">
+                        <h3>Named Scholarships</h3>
+                        <p>Create a lasting legacy by funding a scholarship</p>
+                        <button class="secondary-button">Learn More</button>
+                    </div>
+                    <div class="option-item">
+                        <h3>Planned Giving</h3>
+                        <p>Include St. Joseph's in your estate planning</p>
+                        <button class="secondary-button">Get Started</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="donation-form">
+                <h2>Make a Donation</h2>
+                <form class="giving-form">
+                    <div class="form-section">
+                        <h3>Select Amount</h3>
+                        <div class="amount-buttons">
+                            <button type="button" class="amount-button">$25</button>
+                            <button type="button" class="amount-button">$50</button>
+                            <button type="button" class="amount-button active">$100</button>
+                            <button type="button" class="amount-button">$250</button>
+                            <button type="button" class="amount-button">$500</button>
+                            <button type="button" class="amount-button">Other</button>
+                        </div>
+                        <div class="custom-amount">
+                            <label for="custom-amount">Custom Amount ($)</label>
+                            <input type="number" id="custom-amount" placeholder="Enter amount">
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Designate Your Gift</h3>
+                        <select id="gift-designation" class="form-select">
+                            <option value="stem">STEM Building Fund</option>
+                            <option value="scholarship">General Scholarship Fund</option>
+                            <option value="athletics">Athletics Department</option>
+                            <option value="library">Library Resources</option>
+                            <option value="greatest-need">Area of Greatest Need</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Giving Frequency</h3>
+                        <div class="radio-options">
+                            <div class="radio-option">
+                                <input type="radio" id="one-time" name="frequency" checked>
+                                <label for="one-time">One-time</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="monthly" name="frequency">
+                                <label for="monthly">Monthly</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="quarterly" name="frequency">
+                                <label for="quarterly">Quarterly</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="annually" name="frequency">
+                                <label for="annually">Annually</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="submit-button">Proceed to Payment</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="donor-recognition">
+                <h2>Donor Recognition Levels</h2>
+                <div class="recognition-levels">
+                    <div class="level-item">
+                        <h3>Bronze</h3>
+                        <p class="level-amount">$1 - $1,000</p>
+                        <ul class="level-benefits">
+                            <li>Recognition in annual donor report</li>
+                            <li>University newsletter subscription</li>
+                        </ul>
+                    </div>
+                    <div class="level-item active">
+                        <h3>Silver</h3>
+                        <p class="level-amount">$1,001 - $5,000</p>
+                        <ul class="level-benefits">
+                            <li>All Bronze benefits</li>
+                            <li>Invitation to annual donor reception</li>
+                            <li>Exclusive campus updates</li>
+                        </ul>
+                    </div>
+                    <div class="level-item">
+                        <h3>Gold</h3>
+                        <p class="level-amount">$5,001 - $10,000</p>
+                        <ul class="level-benefits">
+                            <li>All Silver benefits</li>
+                            <li>Special access to university events</li>
+                            <li>Personal campus tour for family</li>
+                        </ul>
+                    </div>
+                    <div class="level-item">
+                        <h3>Platinum</h3>
+                        <p class="level-amount">$10,001+</p>
+                        <ul class="level-benefits">
+                            <li>All Gold benefits</li>
+                            <li>Named recognition opportunity</li>
+                            <li>Private dinner with university leadership</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="donation-history">
+                <h2>Your Donation History</h2>
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Designation</th>
+                            <th>Receipt</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>January 15, 2025</td>
+                            <td>$1,000</td>
+                            <td>STEM Building Fund</td>
+                            <td><a href="#" class="download-link">Download</a></td>
+                        </tr>
+                        <tr>
+                            <td>October 10, 2024</td>
+                            <td>$500</td>
+                            <td>Scholarship Fund</td>
+                            <td><a href="#" class="download-link">Download</a></td>
+                        </tr>
+                        <tr>
+                            <td>July 22, 2024</td>
+                            <td>$500</td>
+                            <td>Library Resources</td>
+                            <td><a href="#" class="download-link">Download</a></td>
+                        </tr>
+                        <tr>
+                            <td>March 5, 2024</td>
+                            <td>$500</td>
+                            <td>STEM Building Fund</td>
+                            <td><a href="#" class="download-link">Download</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="donation-impact">
+                <h2>Student Success Stories</h2>
+                <div class="testimonials">
+                    <div class="testimonial-item">
+                        <p class="testimonial-quote">"Thanks to the alumni scholarship fund, I was able to focus on my studies without the financial burden. I'm now pursuing my PhD in Computer Science."</p>
+                        <p class="testimonial-author">- Maria Rodriguez, Class of 2023</p>
+                    </div>
+                    <div class="testimonial-item">
+                        <p class="testimonial-quote">"The new lab equipment funded by alumni donations gave me hands-on experience that helped me secure my dream job at a leading research institution."</p>
+                        <p class="testimonial-author">- James Wilson, Class of 2024</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tax-info">
+                <h2>Tax Information</h2>
+                <p>All donations to St. Joseph's University are tax-deductible to the extent allowed by law. Our tax ID number is 12-3456789. You will receive a receipt for your donation that can be used for tax purposes.</p>
+                <p>For questions about tax deductions or donation receipts, please contact our development office at <a href="mailto:giving@stjosephs.edu">giving@stjosephs.edu</a> or call (555) 123-4567.</p>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
